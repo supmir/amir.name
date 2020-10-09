@@ -164,15 +164,23 @@
 
                 if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
                     if ( xDiff > 0 ) {
-                        key.push(37);
+                        if(key[key.length-1]!=37){
+                            key.push(37);
+                        }
                     } else {
-                        key.push(39);
+                        if(key[key.length-1]!=39){
+                            key.push(39);
+                        }
                     }                       
                 } else {
                     if ( yDiff > 0 ) {
-                        key.push(38);
+                        if(key[key.length-1]!=38){
+                            key.push(38);
+                        }
                     } else { 
-                        key.push(40);
+                        if(key[key.length-1]!=40){
+                            key.push(40);
+                        }
                     }                                                                 
                 }
                 /* reset values */
