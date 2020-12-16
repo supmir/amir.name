@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpongebobifyIt</title>
+    <title>MemeIt</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
 </head>
 <body>
     <label for="txt">Enter text:</label><br>
@@ -22,60 +22,16 @@
         <button class="copy">Copy text</button>
         <textarea cols=0 rows=20 style="width: 100%;" disabled></textarea>
     </div>
+    <div id="emojify">
+        <h2>Clap:</h2>
+        <button class="copy">Copy text</button>
+        <textarea cols=0 rows=20 style="width: 100%;" disabled></textarea>
+    </div>
 
 
     <input id='copyfrom' tabindex='-1' aria-hidden='true' style="position: absolute;left: -9999px;">
-    <script>
-        $(document).ready(function () {
-            $('#submit').click(function (e) {
-                e.preventDefault();
-                var x = $("#txt").val();
+    <script src="js/memeit.js" type="text/javascript"></script>
 
-                $("#spongebobify").children("textarea")[0].innerHTML = spongebobify(x);
-                // $("#sparklation").children("textarea")[0].innerHTML = sparklation(x);
-                $("#clap").children("textarea")[0].innerHTML = clap(x);
-
-                setTimeout(() => {  
-                    if (confirm("Press ok to visit my website uwu\n\nPress cancel to view the thingy")) {
-                        window.location.replace("http://amir.name.my");
-                    } else {
-                        alert("ok :(");
-                    }
-                 }, 15000);
-                
-
-            });
-            $('#cl').click(function(){
-                var arr= $('textarea')
-            for (let i = 0; i < arr.length; i++) {
-                arr[i].innerHTML = "";
-            }
-            })
-            $('.copy').click(function (){
-                var copyFrom = document.getElementById("copyfrom")
-                copyFrom.value = $(this).siblings("textarea")[0].innerHTML;
-                copyFrom.select();
-                document.execCommand("copy");
-                self.innerHTML="Copied";
-            })
-        });
-        
-        function spongebobify(x){
-            var y = "";
-                for (let i = 0; i < x.length; i++) {
-                    var random_boolean = Math.random() < 0.5;
-                    if (random_boolean){
-                        y += x[i].toLowerCase();
-                    }else{
-                        y += x[i].toUpperCase();
-                    }
-                }
-            return y
-        }
-        function clap(x){
-            return x.replaceAll(" ","👏");
-        }
-    </script>
 </body>
 
 </html>
