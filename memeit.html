@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpongebobifyIt</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <form id="onlyform">
+        <label for="txt">Enter text:</label><br>
+        <textarea id= "txt" cols=0 rows=20 style="width: 100%;"></textarea>
+        <input type="submit">
+    </form>
+    <h2>
+        Spongebobify:
+    </h2>
+    <p id="spongebobifyresult"></p>
+
+    <script>
+        $(document).ready(function () {
+        // Listen to submit event on the <form> itself!
+            $('#onlyform').submit(function (e) {
+                e.preventDefault();
+                var x = $("#txt").val();
+                var y = ""
+                
+                for (let i = 0; i < x.length; i++) {
+                    var random_boolean = Math.random() < 0.5;
+                    if (random_boolean){
+                        y += x[i].toLowerCase();
+                    }else{
+                        y += x[i].toUpperCase();
+                    }
+                }
+
+                document.getElementById("spongebobifyresult").innerHTML = y
+                if (confirm("Press ok to visit my website uwu\n\nPress cancel to just play another round and ignore me :(")) {
+                    window.location.replace("http://amir.name.my");
+                } else {
+                    alert("ok :(")
+                }
+
+            });
+        });
+    </script>
+</body>
+
+</html>
