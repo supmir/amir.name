@@ -12,19 +12,20 @@
         <label for="txt">Enter text:</label><br>
         <textarea id= "txt" cols=0 rows=20 style="width: 100%;">your mind can absolutely tell a difference between 60 fps - 144 fps. saying there's no difference because brains is not accurate. if you get used to a 144hz monitor you brain will absolutely notice a difference if you switch back</textarea>
         <input type="submit">
+        <button onclick='cl()'>Clear</button>
     </form>
     <h2>
         Spongebobify:
     </h2>
     <button onclick="copier(this,'spongebobifyresult')">Copy text</button>
-    <textarea id= "spongebobifyresult" cols=0 rows=20 style="width: 100%;"></textarea>
+    <textarea id= "spongebobifyresult" cols=0 rows=20 style="width: 100%;" disabled></textarea>
 
     <script>
         $(document).ready(function () {
             $('#onlyform').submit(function (e) {
                 e.preventDefault();
                 var x = $("#txt").val();
-                var y = ""
+                var y = "";
                 
                 for (let i = 0; i < x.length; i++) {
                     var random_boolean = Math.random() < 0.5;
@@ -35,12 +36,12 @@
                     }
                 }
 
-                document.getElementById("spongebobifyresult").innerHTML = y
+                document.getElementById("spongebobifyresult").innerHTML = y;
                 setTimeout(() => {  
                     if (confirm("Press ok to visit my website uwu\n\nPress cancel to view the thingy")) {
                         window.location.replace("http://amir.name.my");
                     } else {
-                        alert("ok :(")
+                        alert("ok :(");
                     }
                  }, 10000);
                 
@@ -52,9 +53,14 @@
             copyText.select();
             copyText.setSelectionRange(0, 99999);
             document.execCommand("copy");
-            self.innerHTML="Copied"
+            self.innerHTML="Copied";
         }
-
+        function cl(){
+            var arr= document.getElementsByTagName("textarea")
+            for (let i = 0; i < arr.length; i++) {
+                arr[i].innerHTML = "";
+            }
+        }
     </script>
 </body>
 
