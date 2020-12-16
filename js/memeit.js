@@ -21,8 +21,8 @@ $(document).ready(function () {
     });
     $('#cl').click(function(){
         var arr= $('textarea')
-    for (let i = 0; i < arr.length; i++) {
-        arr[i].innerHTML = "";
+        for (let i = 0; i < arr.length; i++) {
+            arr[i].innerHTML = "";
     }
     })
     $('.copy').click(function (){
@@ -47,7 +47,7 @@ function spongebobify(x){
     return y
 }
 function clap(x){
-    return x.replaceAll(" ","👏");
+    return x.replace(/ /g,"👏");
 }
 
 
