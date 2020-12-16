@@ -6,8 +6,8 @@ $(document).ready(function () {
 
         $("#spongebobify").children("textarea")[0].innerHTML = spongebobify(x);
         // $("#sparklation").children("textarea")[0].innerHTML = sparklation(x);
-        $("#clap").children("textarea")[0].innerHTML = clap(x);
         $("#emojify").children("textarea")[0].innerHTML = emojify(x);
+        $("#clap").children("textarea")[0].innerHTML = clap(x);
 
         setTimeout(() => {  
             if (confirm("Press ok to visit my website uwu\n\nPress cancel to view the thingy")) {
@@ -74,7 +74,6 @@ function emojify(text, len_probabilities = [1, 1, 1, 1, 2, 2, 3]) {
     return text
         .split(/ /g)
         .map(function(word) {
-            console.log(word)
             let emojified = "";
                 if (edb[stripWord(word)]) {
                     let emoji_string = "";
@@ -87,9 +86,9 @@ function emojify(text, len_probabilities = [1, 1, 1, 1, 2, 2, 3]) {
                     for (let i of _.range(_.sample(len_probabilities))) {
                         emoji_string += _.sample(emojies);
                     }
-                    emojified += word +" "+ emoji_string + " ";
+                    emojified += word +" "+ emoji_string + "";
                 } else {
-                    emojified += word + " ";
+                    emojified += word + "";
                 }
             return emojified
             })
