@@ -8,25 +8,22 @@
 
 </head>
 <body>
-    <form id="onlyform">
-        <label for="txt">Enter text:</label><br>
-        <textarea id= "txt" cols=0 rows=20 style="width: 100%;">your mind can absolutely tell a difference between 60 fps - 144 fps. saying there's no difference because brains is not accurate. if you get used to a 144hz monitor you brain will absolutely notice a difference if you switch back</textarea>
-        <input type="submit">
-        <button onclick='cl()'>Clear</button>
-    </form>
+    <label for="txt">Enter text:</label><br>
+    <textarea id= "txt" cols=0 rows=20 style="width: 100%;">your mind can absolutely tell a difference between 60 fps - 144 fps. saying there's no difference because brains is not accurate. if you get used to a 144hz monitor you brain will absolutely notice a difference if you switch back</textarea>
+    <button id="submit">Submit</button>
+    <button onclick='cl()'>Clear</button>
     <h2>
         Spongebobify:
     </h2>
     <button onclick="copier(this,'spongebobifyresult')">Copy text</button>
     <textarea id= "spongebobifyresult" cols=0 rows=20 style="width: 100%;" disabled></textarea>
-
+    <input id='copyfrom' tabindex='-1' aria-hidden='true' style="position: absolute;left: -9999px;">
     <script>
         $(document).ready(function () {
-            $('#onlyform').submit(function (e) {
+            $('#submit').click(function (e) {
                 e.preventDefault();
                 var x = $("#txt").val();
                 var y = "";
-                
                 for (let i = 0; i < x.length; i++) {
                     var random_boolean = Math.random() < 0.5;
                     if (random_boolean){
@@ -35,7 +32,6 @@
                         y += x[i].toUpperCase();
                     }
                 }
-
                 document.getElementById("spongebobifyresult").innerHTML = y;
                 setTimeout(() => {  
                     if (confirm("Press ok to visit my website uwu\n\nPress cancel to view the thingy")) {
@@ -43,15 +39,15 @@
                     } else {
                         alert("ok :(");
                     }
-                 }, 10000);
+                 }, 15000);
                 
 
             });
         });
         function copier(self, x) {
-            var copyText = document.getElementById(x);
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
+            var copyFrom = document.getElementById("copyfrom")
+            copyFrom.value = document.getElementById(x).innerHTML;
+            copyFrom.select();
             document.execCommand("copy");
             self.innerHTML="Copied";
         }
