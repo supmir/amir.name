@@ -10,17 +10,17 @@
 <body>
     <form id="onlyform">
         <label for="txt">Enter text:</label><br>
-        <textarea id= "txt" cols=0 rows=20 style="width: 100%;"></textarea>
+        <textarea id= "txt" cols=0 rows=20 style="width: 100%;">your mind can absolutely tell a difference between 60 fps - 144 fps. saying there's no difference because brains is not accurate. if you get used to a 144hz monitor you brain will absolutely notice a difference if you switch back</textarea>
         <input type="submit">
     </form>
     <h2>
         Spongebobify:
     </h2>
-    <p id="spongebobifyresult"></p>
+    <button onclick="copier(this,'spongebobifyresult')">Copy text</button>
+    <textarea id= "spongebobifyresult" cols=0 rows=20 style="width: 100%;"></textarea>
 
     <script>
         $(document).ready(function () {
-        // Listen to submit event on the <form> itself!
             $('#onlyform').submit(function (e) {
                 e.preventDefault();
                 var x = $("#txt").val();
@@ -36,14 +36,25 @@
                 }
 
                 document.getElementById("spongebobifyresult").innerHTML = y
-                if (confirm("Press ok to visit my website uwu\n\nPress cancel to just play another round and ignore me :(")) {
-                    window.location.replace("http://amir.name.my");
-                } else {
-                    alert("ok :(")
-                }
+                setTimeout(() => {  
+                    if (confirm("Press ok to visit my website uwu\n\nPress cancel to view the thingy")) {
+                        window.location.replace("http://amir.name.my");
+                    } else {
+                        alert("ok :(")
+                    }
+                 }, 10000);
+                
 
             });
         });
+        function copier(self, x) {
+            var copyText = document.getElementById(x);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            self.innerHTML="Copied"
+        }
+
     </script>
 </body>
 
