@@ -11,28 +11,30 @@
     <label for="txt">Enter text:</label><br>
     <textarea id= "txt" cols=0 rows=20 style="width: 100%;">your mind can absolutely tell a difference between 60 fps - 144 fps. saying there's no difference because brains is not accurate. if you get used to a 144hz monitor you brain will absolutely notice a difference if you switch back</textarea>
     <button id="submit">Submit</button>
-    <button onclick='cl()'>Clear</button>
-    <h2>
-        Spongebobify:
-    </h2>
-    <button onclick="copier(this,'spongebobifyresult')">Copy text</button>
-    <textarea id= "spongebobifyresult" cols=0 rows=20 style="width: 100%;" disabled></textarea>
+    <button id="cl">Clear</button>
+    <div id="spongebobify">
+        <h2>Spongebobify:</h2>
+        <button class="copy">Copy text</button>
+        <textarea cols=0 rows=20 style="width: 100%;" disabled></textarea>
+    </div>
+    <div id="clap">
+        <h2>Clap:</h2>
+        <button class="copy">Copy text</button>
+        <textarea cols=0 rows=20 style="width: 100%;" disabled></textarea>
+    </div>
+
+
     <input id='copyfrom' tabindex='-1' aria-hidden='true' style="position: absolute;left: -9999px;">
     <script>
         $(document).ready(function () {
             $('#submit').click(function (e) {
                 e.preventDefault();
                 var x = $("#txt").val();
-                var y = "";
-                for (let i = 0; i < x.length; i++) {
-                    var random_boolean = Math.random() < 0.5;
-                    if (random_boolean){
-                        y += x[i].toLowerCase();
-                    }else{
-                        y += x[i].toUpperCase();
-                    }
-                }
-                document.getElementById("spongebobifyresult").innerHTML = y;
+
+                $("#spongebobify").children("textarea")[0].innerHTML = spongebobify(x);
+                // $("#sparklation").children("textarea")[0].innerHTML = sparklation(x);
+                $("#clap").children("textarea")[0].innerHTML = clap(x);
+
                 setTimeout(() => {  
                     if (confirm("Press ok to visit my website uwu\n\nPress cancel to view the thingy")) {
                         window.location.replace("http://amir.name.my");
@@ -43,19 +45,35 @@
                 
 
             });
-        });
-        function copier(self, x) {
-            var copyFrom = document.getElementById("copyfrom")
-            copyFrom.value = document.getElementById(x).innerHTML;
-            copyFrom.select();
-            document.execCommand("copy");
-            self.innerHTML="Copied";
-        }
-        function cl(){
-            var arr= document.getElementsByTagName("textarea")
+            $('#cl').click(function(){
+                var arr= $('textarea')
             for (let i = 0; i < arr.length; i++) {
                 arr[i].innerHTML = "";
             }
+            })
+            $('.copy').click(function (){
+                var copyFrom = document.getElementById("copyfrom")
+                copyFrom.value = $(this).siblings("textarea")[0].innerHTML;
+                copyFrom.select();
+                document.execCommand("copy");
+                self.innerHTML="Copied";
+            })
+        });
+        
+        function spongebobify(x){
+            var y = "";
+                for (let i = 0; i < x.length; i++) {
+                    var random_boolean = Math.random() < 0.5;
+                    if (random_boolean){
+                        y += x[i].toLowerCase();
+                    }else{
+                        y += x[i].toUpperCase();
+                    }
+                }
+            return y
+        }
+        function clap(x){
+            return x.replaceAll(" ","👏");
         }
     </script>
 </body>
