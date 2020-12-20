@@ -71,6 +71,9 @@ function stripWord(word) {
 }
 
 function emojify(text, len_probabilities = [1, 1, 1, 1, 2, 2, 3]) {
+    if (adb==null){
+        return ""
+    }
     return text
         .split(/ /g)
         .map(function(word) {
