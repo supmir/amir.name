@@ -1,3 +1,28 @@
 */.DS_Store
 .DS_Store
-*wp-config.php
+
+/*
+!.gitignore
+!wp-content/
+ 
+# Ignore everything in the "wp-content" directory, except the "plugins"
+# and "themes" directories.
+wp-content/*
+!wp-content/plugins/
+!wp-content/themes/
+ 
+# Ignore everything in the "plugins" directory, except the plugins you
+# specify (see the commented-out examples for hints on how to do this.)
+wp-content/plugins/*
+!wp-content/plugins/akismet/
+!wp-content/plugins/elementor/
+!wp-content/plugins/elementskit-lite/
+!wp-content/plugins/essential-addons-for-elementor-lite/
+!wp-content/plugins/header-footer-elementor/
+!wp-content/plugins/ooohboi-steroids-for-elementor/
+!wp-content/plugins/premium-addons-for-elementor/
+ 
+# Ignore everything in the "themes" directory, except the themes you
+# specify (see the commented-out example for a hint on how to do this.)
+wp-content/themes/*
+!wp-content/themes/twentytwentyone/
